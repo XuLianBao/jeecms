@@ -1,0 +1,8 @@
+{
+  path: '/channel',
+  name: '栏目',
+  component: indexThreeAndUserInfoExports,
+  iconCls: 'icon-appstoreo',
+  redirect: '/channel/list',
+  children: [],
+}

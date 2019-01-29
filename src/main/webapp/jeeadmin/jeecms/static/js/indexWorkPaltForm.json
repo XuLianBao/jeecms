@@ -1,0 +1,2351 @@
+[{
+    path: '/contentMange',
+    name: '内容',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1001 icon-file',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/content',
+        name: '内容管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/content/list',
+        children: [{
+            path: '/content/list',
+            name: '内容列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(149)]).then(function() {
+            var t = [a('LPDJ')];
+            e.apply(null, t)
+            }.bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/content/save',
+                name: '内容添加',
+                component: doComponent([96],'KNay')
+            }, {
+                path: '/content/update',
+                name: '内容修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(133)]).then(function() {
+                var t = [a('spI4')];
+            e.apply(null, t)
+            } .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/topic',
+        name: '专题管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/topic/list',
+        children: [{
+            path: '/topic/list',
+            name: '专题列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(34)]).then(function() {
+            var t = [a('9OH7')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/topic/save',
+                name: '专题添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(10)]).then(function() {
+                var t = [a('ycKU')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/topic/update',
+                name: '专题修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(10)]).then(function() {
+                var t = [a('ycKU')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }]
+}, {
+    path: '/channel',
+    name: '栏目',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1002 icon-appstoreo',
+    redirect: '/channel/list',
+    isParent: true,
+    leaf: true,
+    children: [{
+        path: '/channel/list',
+        name: '栏目列表',
+        component: function(e) {
+        Promise.all([a.e(0), a.e(139)]).then(function() {
+        var t = [a('9R/o')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        },
+        hidden: true
+        }, {
+            path: '/channel/save',
+            name: '栏目添加',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(60)]).then(function() {
+            var t = [a('Vi+y')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        },
+        hidden: true
+        }, {
+            path: '/channel/update',
+            name: '栏目修改',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(66)]).then(function() {
+            var t = [a('59X9')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        },
+        hidden: true
+        }, {
+            path: '/channel/copy',
+            name: '栏目复制',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(29)]).then(function() {
+            var t = [a('snBf')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        },
+        hidden: true
+        }]
+}, {
+    path: '/dataCenter',
+    name: '数据中心',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1003 icon-barschart',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/traffic',
+        name: '流量统计',
+        component: Le.a,
+        redirect: '/traffic/trend',
+        children: [{
+            path: '/traffic/trend',
+            name: '趋势分析',
+            component: function(e) {
+            a.e(91).then(function() {
+            var t = [a('NFgv')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/traffic/channel',
+                name: '栏目访问量排行',
+                component: function(e) {
+                a.e(35).then(function() {
+                var t = [a('x9nS')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/sourceanalysis',
+        name: '来源分析',
+        component: Le.a,
+        children: [{
+            path: '/sourceanalysis/class',
+            name: '来源分类',
+            component: function(e) {
+            a.e(31).then(function() {
+            var t = [a('iEAc')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/sourceanalysis/engin',
+                name: '搜索引擎',
+                component: function(e) {
+                a.e(127).then(function() {
+                var t = [a('fx06')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/sourceanalysis/domain',
+                name: '来访域名',
+                component: function(e) {
+                a.e(69).then(function() {
+                var t = [a('a+hu')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/sourceanalysis/city',
+                name: '来访地区',
+                component: function(e) {
+                a.e(108).then(function() {
+                var t = [a('JhQp')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/sourceanalysis/keywords',
+                name: '搜索词',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(125)]).then(function() {
+                var t = [a('ax8Y')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/surveyedanalysis',
+        name: '受访分析',
+        component: Le.a,
+        children: [{
+            path: '/surveyedanalysis/surveyed',
+            name: '受访页面',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(92)]).then(function() {
+            var t = [a('lYJx')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/surveyedanalysis/index',
+                name: '入口页面',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(38)]).then(function() {
+                var t = [a('DGD5')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/loyalty',
+        name: '忠诚度',
+        isParent: true,
+        component: function(e) {
+        a.e(64).then(function() {
+        var t = [a('HvmL')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        }
+    }, {
+            path: '/siteProfile',
+            name: '网站概况',
+            component: Le.a,
+            children: [{
+                path: '/siteProfile/contentnum',
+                name: '内容发布数',
+                component: function(e) {
+                a.e(132).then(function() {
+                var t = [a('uSx5')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/siteProfile/worknum',
+                    name: '工作量',
+                    component: function(e) {
+                    a.e(39).then(function() {
+                    var t = [a('B9q+')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/siteProfile/commentnum',
+                    name: '评论数',
+                    component: function(e) {
+                    a.e(123).then(function() {
+                    var t = [a('P+Wq')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/siteProfile/leavenum',
+                    name: '留言数',
+                    component: function(e) {
+                    a.e(43).then(function() {
+                    var t = [a('+8Dd')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/siteProfile/usernum',
+                    name: '会员注册数',
+                    component: function(e) {
+                    a.e(124).then(function() {
+                    var t = [a('7Kqp')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }]
+}, {
+    path: '/userManager',
+    name: '用户管理',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1004 icon-user',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/user',
+        name: '会员管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/user/list',
+        children: [{
+            path: '/user/list',
+            name: '会员列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(49)]).then(function() {
+            var t = [a('WYAc')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/user/save',
+                name: '会员添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(144)]).then(function() {
+                var t = [a('ZZW/')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }, {
+                path: '/user/update',
+                name: '会员修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(128)]).then(function() {
+                var t = [a('I5i2')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }]
+    }, {
+        path: '/role',
+        name: '角色管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/role/list',
+        children: [{
+            path: '/role/list',
+            name: '角色管理',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(115)]).then(function() {
+            var t = [a('nZ/C')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/role/save',
+                name: '角色添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(2)]).then(function() {
+                var t = [a('/XBl')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }, {
+                path: '/role/update',
+                name: '角色修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(2)]).then(function() {
+                var t = [a('/XBl')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }, {
+                path: '/role/members',
+                name: '成员列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(28)]).then(function() {
+                var t = [a('JS/O')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }]
+    }, {
+        path: '/account',
+        name: '账户绑定',
+        component: Le.a,
+        isParent: true,
+        redirect: '/account/list',
+        children: [{
+            path: '/account/list',
+            name: '列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(104)]).then(function() {
+            var t = [a('oTN/')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/adminGlobal',
+        name: '管理员(全站)',
+        component: Le.a,
+        isParent: true,
+        redirect: '/adminGlobal/list',
+        children: [{
+            path: '/adminGlobal/list',
+            name: '管理员(全站)列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(142)]).then(function() {
+            var t = [a('Iooq')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/adminGlobal/edit',
+                name: '管理员(全站)编辑',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(90)]).then(function() {
+                var t = [a('n7ci')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }, {
+                path: '/adminGlobal/add',
+                name: '管理员(全站)添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(141)]).then(function() {
+                var t = [a('DOs3')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            },
+            hidden: true
+            }]
+    }, {
+        path: '/adminGlocal',
+        name: '管理员(本站)',
+        component: Le.a,
+        isParent: true,
+        redirect: '/adminGlocal/list',
+        children: [{
+            path: '/adminGlocal/list',
+            name: '管理员(本站)列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(112)]).then(function() {
+            var t = [a('Rf+L')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/adminGlocal/edit',
+                name: '管理员(本站)修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(61)]).then(function() {
+                var t = [a('RVS4')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/adminGlocal/add',
+                name: '管理员(本站)添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(116)]).then(function() {
+                var t = [a('9Tzf')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/log',
+        name: '操作日志',
+        component: Le.a,
+        isParent: true,
+        redirect: '/log/list',
+        children: [{
+            path: '/log/list',
+            name: '日志列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(150)]).then(function() {
+            var t = [a('bsT5')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/group',
+        name: '会员组管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/group/list',
+        children: [{
+            path: '/group/list',
+            name: '会员组列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(120)]).then(function() {
+            var t = [a('eDha')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/group/add',
+                name: '会员组添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(30)]).then(function() {
+                var t = [a('Jvxf')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/group/edit',
+                name: '会员组修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(56)]).then(function() {
+                var t = [a('uwEp')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/message',
+        name: '站内信管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/message/list',
+        children: [{
+            path: '/message/list',
+            name: '站内信列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(140)]).then(function() {
+            var t = [a('wtNW')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/message/add',
+                name: '发送站内信',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(41)]).then(function() {
+                var t = [a('kJL/')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/message/seek',
+                name: '站内信查看',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(94)]).then(function() {
+                var t = [a('uwsW')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/message/reply',
+                name: '站内信回复',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(40)]).then(function() {
+                var t = [a('eHPr')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/message/forward',
+                name: '站内信转发',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(134)]).then(function() {
+                var t = [a('Mh0T')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }]
+}, {
+    path: '/operate',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1005 icon-yunying',
+    name: '运营',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/userTest',
+        name: '测试用户',
+        component: Le.a,
+        isParent: true,
+        redirect: '/userTest/list',
+        children: [{
+            path: '/userTest/list',
+            name: '测试用户列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(160)]).then(function() {
+            var t = [a('userTest')];
+            localStorage.setItem("_query_param",'测试用户列表');
+            e.apply(null, t)
+            } .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/userTest/save',
+                name: '测试用户添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(160)]).then(function() {
+                var t = [a('userTest2')];
+            localStorage.setItem("_query_param",'{"src":"https://www.baidu.com/","isBack":1}');
+            e.apply(null, t)
+            }.bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/userTest/update',
+                name: '测试用户修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(9)]).then(function() {
+                var t = [a('uMon')];
+            e.apply(null, t)
+            }.bind(this)).catch(a.oe)
+            },
+        }]
+    }, {
+        path: '/link',
+        name: '友情链接',
+        component: Le.a,
+        isParent: true,
+        redirect: '/link/list',
+        children: [{
+            path: '/link/list',
+            name: '友情链接列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(118)]).then(function() {
+            var t = [a('friendLink')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/link/save',
+                name: '友情链接添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(9)]).then(function() {
+                var t = [a('uMon')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/link/update',
+                name: '友情链接修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(9)]).then(function() {
+                var t = [a('uMon')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/link/typeList',
+                name: '类别列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(48)]).then(function() {
+                var t = [a('Kd2r')];
+            e.apply(null, t)
+            } .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/ad',
+        name: '广告管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/ad/list',
+        children: [{
+            path: '/ad/list',
+            name: '广告列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(158)]).then(function() {
+            var t = [a('dIgG')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/ad/save',
+                name: '广告添加',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(19)]).then(function() {
+                var t = [a('ygPA')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/ad/update',
+                name: '广告修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(19)]).then(function() {
+                var t = [a('ygPA')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/adSpace/list',
+                name: '广告版位列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(89)]).then(function() {
+                var t = [a('4Xah')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/contentBuy',
+        name: '内容购买记录',
+        component: Le.a,
+        isParent: true,
+        redirect: '/contentBuy/list',
+        children: [{
+            path: '/contentBuy/list',
+            name: '内容购买记录列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(80)]).then(function() {
+            var t = [a('sZeH')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/userAccount',
+        name: '用户账户统计',
+        component: Le.a,
+        isParent: true,
+        redirect: '/userAccount/list',
+        children: [{
+            path: '/userAccount/list',
+            name: '用户账户统计列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(151)]).then(function() {
+            var t = [a('3JBH')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/charge',
+        name: '内容收费统计',
+        component: Le.a,
+        isParent: true,
+        redirect: '/charge/list',
+        children: [{
+            path: '/charge/list',
+            name: '内容收费统计列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(68)]).then(function() {
+            var t = [a('IUDO')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/charge/commission',
+                name: '平台佣金所得',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(109)]).then(function() {
+                var t = [a('X1Au')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/accountPay',
+        name: '转账管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/accountPay/list',
+        children: [{
+            path: '/accountPay/list',
+            name: '转账列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(33)]).then(function() {
+            var t = [a('CD6+')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/drawApply',
+        name: '提现管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/drawApply/list',
+        children: [{
+            path: '/drawApply/list',
+            name: '提现列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(146)]).then(function() {
+            var t = [a('fsmg')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/drawApply/traAccount',
+                name: '转账',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(78)]).then(function() {
+                var t = [a('AR9X')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/comment',
+        name: '评论管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/comment/list',
+        children: [{
+            path: '/comment/list',
+            name: '评论列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(138)]).then(function() {
+            var t = [a('Rgao')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/comment/itemList',
+                name: '评论查看',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(145)]).then(function() {
+                var t = [a('ceSR')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/job',
+        name: '职位申请',
+        component: Le.a,
+        isParent: true,
+        redirect: '/job/list',
+        children: [{
+            path: '/job/list',
+            name: '职位申请列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(152)]).then(function() {
+            var t = [a('IT3q')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/job/seek',
+                name: '简历查看',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(26)]).then(function() {
+                var t = [a('9CX9')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/db',
+        name: '数据备份',
+        component: Le.a,
+        children: [{
+            path: '/backups',
+            name: '备份',
+            component: Le.a,
+            redirect: '/backups/list',
+            children: [{
+                path: '/backups/list',
+                name: '备份列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(155)]).then(function() {
+                var t = [a('mzAc')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/backups/seek',
+                    name: '表字段列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(154)]).then(function() {
+                    var t = [a('Bwzv')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/revert',
+            name: '恢复',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(95)]).then(function() {
+            var t = [a('sLp4')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/backupsDir',
+                name: '备份目录',
+                component: Le.a,
+                redirect: '/backupsDir/list',
+                children: [{
+                    path: '/backupsDir/list',
+                    name: '备份目录列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(119)]).then(function() {
+                    var t = [a('1fh/')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/backupsDir/edit',
+                        name: '备份目录重命名',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(156)]).then(function() {
+                        var t = [a('bc80')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }]
+    }, {
+        path: '/vote',
+        name: '问卷管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/vote/list',
+        children: [{
+            path: '/vote/list',
+            name: '问卷列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(32)]).then(function() {
+            var t = [a('osP+')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/vote/save',
+                name: '问卷新增',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(1)]).then(function() {
+                var t = [a('8DFY')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/vote/update',
+                name: '问卷修改',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(1)]).then(function() {
+                var t = [a('8DFY')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/guestbook',
+        name: '留言管理',
+        component: Le.a,
+        isParent: true,
+        redirect: '/guestbook/list',
+        children: [{
+            path: '/guestbook/list',
+            name: '留言列表',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(79)]).then(function() {
+            var t = [a('tN8a')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/guestbook/save',
+                name: '留言新增',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(117)]).then(function() {
+                var t = [a('LENb')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/guestbookType/list',
+                name: '留言类型列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(58)]).then(function() {
+                var t = [a('TdIV')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/collection',
+        name: '采集管理',
+        component: Le.a,
+        children: [{
+            path: '/collectionmanage',
+            name: '采集',
+            component: Le.a,
+            redirect: '/collectionmanage/list',
+            children: [{
+                path: '/collectionmanage/list',
+                name: '采集列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(87)]).then(function() {
+                var t = [a('YCJl')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/collectionmanage/save',
+                    name: '采集添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(18)]).then(function() {
+                    var t = [a('DVF8')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/collectionmanage/update',
+                    name: '采集修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(18)]).then(function() {
+                    var t = [a('DVF8')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/collectionhistory',
+            name: '采集历史',
+            component: Le.a,
+            redirect: '/collectionhistory/list',
+            children: [{
+                path: '/collectionhistory/list',
+                name: '采集列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(75)]).then(function() {
+                var t = [a('GD8E')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/collectionspeed',
+            name: '采集进度',
+            component: Le.a,
+            redirect: '/collectionspeed/view',
+            children: [{
+                path: '/collectionspeed/view',
+                name: '采集查看',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(81)]).then(function() {
+                var t = [a('SH6+')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }]
+    }, {
+        path: '/weixin',
+        name: '公众号设置',
+        component: Le.a,
+        children: [{
+            path: '/weixinConfig',
+            name: '公众号设置',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(121)]).then(function() {
+            var t = [a('XT4Y')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/weixinMenu',
+                name: '自定义菜单',
+                component: Le.a,
+                redirect: '/weixinMenu/list',
+                children: [{
+                    path: '/weixinMenu/list',
+                    name: '自定义菜单列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(62)]).then(function() {
+                    var t = [a('FOgL')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/weixinMenu/add',
+                        name: '自定义菜单添加',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(20)]).then(function() {
+                        var t = [a('L2Rg')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/weixinMenu/edit',
+                        name: '自定义菜单修改',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(20)]).then(function() {
+                        var t = [a('L2Rg')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/weixinMenu/child',
+                        name: '自定义菜单二级菜单',
+                        component: Le.a,
+                        redirect: '/weixinMenu/child/list',
+                        children: [{
+                            path: '/weixinMenu/child/list',
+                            name: '二级菜单列表',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(54)]).then(function() {
+                            var t = [a('aq8z')];
+                            e.apply(null, t)
+                            }
+                            .bind(this)).catch(a.oe)
+                            }
+                        }, {
+                                path: '/weixinMenu/child/add',
+                                name: '二级菜单添加',
+                                component: function(e) {
+                                Promise.all([a.e(0), a.e(5)]).then(function() {
+                                var t = [a('ekt7')];
+                            e.apply(null, t)
+                            }
+                            .bind(this)).catch(a.oe)
+                            }
+                        }, {
+                                path: '/weixinMenu/child/edit',
+                                name: '二级菜单修改',
+                                component: function(e) {
+                                Promise.all([a.e(0), a.e(5)]).then(function() {
+                                var t = [a('ekt7')];
+                            e.apply(null, t)
+                            }
+                            .bind(this)).catch(a.oe)
+                            }
+                        }]
+                    }]
+            }, {
+                path: '/weixinMessage',
+                name: '自定义回复',
+                component: Le.a,
+                redirect: '/weixinMessage/list',
+                children: [{
+                    path: '/weixinMessage/list',
+                    name: '自定义回复列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(110)]).then(function() {
+                    var t = [a('pO0i')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/weixinMessage/add',
+                        name: '自定义回复添加',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(11)]).then(function() {
+                        var t = [a('wxFs')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/weixinMessage/edit',
+                        name: '自定义回复修改',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(11)]).then(function() {
+                        var t = [a('wxFs')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/weixinMessageDef',
+                name: '默认回复',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(84)]).then(function() {
+                var t = [a('quya')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }, {
+        path: '/statically',
+        name: '页面静态化',
+        component: Le.a,
+        children: [{
+            path: '/statically/indexStatic',
+            name: '首页静态化',
+            component: function(e) {
+            Promise.all([a.e(0), a.e(126)]).then(function() {
+            var t = [a('CMYX')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/statically/channelStatic',
+                name: '栏目静态化',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(129)]).then(function() {
+                var t = [a('hzJQ')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }, {
+                path: '/statically/contentStatic',
+                name: '内容静态化',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(36)]).then(function() {
+                var t = [a('Cizx')];
+            e.apply(null, t)
+            }
+            .bind(this)).catch(a.oe)
+            }
+        }]
+    }]
+}, {
+    path: '/help',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1006 icon-caozuo-fuzhugongneng',
+    name: '辅助',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/fullTextSearch',
+        isParent: true,
+        name: '全文检索',
+        component: function(e) {
+        Promise.all([a.e(0), a.e(67)]).then(function() {
+        var t = [a('LbaR')];
+        e.apply(null, t)
+        }.bind(this)).catch(a.oe)
+        }
+    }, {
+            path: '/dictionary',
+            name: '字典',
+            component: Le.a,
+            isParent: true,
+            redirect: '/dictionary/list',
+            children: [{
+                path: '/dictionary/list',
+                name: '字典列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(153)]).then(function() {
+                var t = [a('ZflG')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/contentCycle',
+            name: '内容回收站',
+            component: Le.a,
+            isParent: true,
+            redirect: '/contentCycle/list',
+            children: [{
+                path: '/contentCycle/list',
+                name: '内容回收站列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(114)]).then(function() {
+                var t = [a('ORSA')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/crontab',
+            name: '定时任务',
+            component: Le.a,
+            isParent: true,
+            redirect: '/crontab/list',
+            children: [{
+                path: '/crontab/list',
+                name: '定时任务列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(157)]).then(function() {
+                var t = [a('5Inf')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/crontab/save',
+                    name: '定时任务添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(13)]).then(function() {
+                    var t = [a('0Kzi')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/crontab/update',
+                    name: '定时任务修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(13)]).then(function() {
+                    var t = [a('0Kzi')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/file',
+            name: '附件管理',
+            component: Le.a,
+            isParent: true,
+            redirect: '/file/list',
+            children: [{
+                path: '/file/list',
+                name: '附件管理',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(101)]).then(function() {
+                var t = [a('DXK4')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/dimensioncode',
+            name: '二维码生成',
+            component: Le.a,
+            isParent: true,
+            redirect: '/dimensioncode/create',
+            children: [{
+                path: '/dimensioncode/create',
+                name: '二维码管理创建',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(27)]).then(function() {
+                var t = [a('c/X8')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/scoregroup',
+            name: '评分组管理',
+            component: Le.a,
+            isParent: true,
+            redirect: '/scoregroup/list',
+            children: [{
+                path: '/scoregroup/list',
+                name: '评分组列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(57)]).then(function() {
+                var t = [a('j2IX')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/scoregroup/add',
+                    name: '评分组添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(24)]).then(function() {
+                    var t = [a('8qNh')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/scoregroup/edit',
+                    name: '评分组修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(24)]).then(function() {
+                    var t = [a('8qNh')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/scoregroup/scoreitem/list',
+                    name: '评分项管理',
+                    component: Le.a,
+                    redirect: '/scoregroup/scoreitem/list',
+                    children: [{
+                        path: '/scoregroup/scoreitem/list',
+                        name: '评分项列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(102)]).then(function() {
+                        var t = [a('AWlK')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/scoregroup/scoreitem/add',
+                            name: '评分项添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(3)]).then(function() {
+                            var t = [a('pp0J')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/scoregroup/scoreitem/edit',
+                            name: '评分项修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(3)]).then(function() {
+                            var t = [a('pp0J')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }]
+        }, {
+            path: '/word',
+            name: '词汇管理',
+            component: Le.a,
+            children: [{
+                path: '/tag',
+                name: 'tag管理',
+                component: Le.a,
+                redirect: '/tag/list',
+                children: [{
+                    path: '/tag/list',
+                    name: 'tag列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(71)]).then(function() {
+                    var t = [a('kIK3')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/sensitivity',
+                name: '敏感词管理',
+                component: Le.a,
+                redirect: '/sensitivity/list',
+                children: [{
+                    path: '/sensitivity/list',
+                    name: '敏感词列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(130)]).then(function() {
+                    var t = [a('0yTa')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/keyword',
+                name: '关键词管理',
+                component: Le.a,
+                redirect: '/keyword/list',
+                children: [{
+                    path: '/keyword/list',
+                    name: '关键词列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(59)]).then(function() {
+                    var t = [a('Pboa')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/origin',
+                name: '来源管理',
+                component: Le.a,
+                redirect: '/origin/list',
+                children: [{
+                    path: '/origin/list',
+                    name: '来源列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(99)]).then(function() {
+                    var t = [a('WYJ+')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/searchwords',
+                name: '热词管理',
+                component: Le.a,
+                redirect: '/searchwords/list',
+                children: [{
+                    path: '/searchwords/list',
+                    name: '热词列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(131)]).then(function() {
+                    var t = [a('uAPT')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }]
+        }]
+}, {
+    path: '/interface',
+    name: '界面',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1007 icon-windowso',
+    children: [{
+        path: '/templatelist',
+        name: '模板',
+        component: Le.a,
+        isParent: true,
+        redirect: '/template/mange',
+        children: [{
+            path: '/template/mange',
+            name: '模板管理',
+            component: Re,
+            hidden: true,
+            children: [{
+                path: '/templatelist',
+                name: '模板列表',
+                component: Oe,
+                hidden: true
+            }, {
+                path: '/templateadd',
+                name: '模板添加',
+                component: Ue,
+                hidden: true
+            }, {
+                path: '/templateedit',
+                name: '模板修改',
+                component: Ue,
+                hidden: true
+            }, {
+                path: '/templaterename',
+                name: '模板重命名',
+                component: Be,
+                hidden: true
+            }, {
+                path: '/templatesetting',
+                name: '模板设置',
+                component: je,
+                hidden: true
+            }]
+        }]
+    }, {
+        path: '/resourcelist',
+        name: '资源',
+        isParent: true,
+        component: Le.a,
+        redirect: '/resource/mange',
+        children: [{
+            path: '/resource/mange',
+            name: '资源管理',
+            component: De,
+            hidden: true,
+            children: [{
+                path: '/resourcelist',
+                name: '资源列表',
+                component: Ee,
+                hidden: true
+            }, {
+                path: '/resourceadd',
+                meta: {
+                    role: 'resourceadd'
+                },
+                name: '资源添加',
+                component: Ae,
+                hidden: true
+            }, {
+                path: '/resourceedit',
+                name: '资源修改',
+                component: Ae,
+                hidden: true
+            }, {
+                path: '/resourcerename',
+                name: '资源重命名',
+                component: Me,
+                hidden: true
+            }]
+        }]
+    }]
+}, {
+    path: '/config',
+    component: indexThreeAndUserInfoExports,
+    iconCls: '1008 icon-setting',
+    name: '配置',
+    meta: {
+        isLink: true
+    },
+    children: [{
+        path: '/siteConfig',
+        isParent: true,
+        name: '站点设置',
+        component: function(e) {
+        Promise.all([a.e(0), a.e(76)]).then(function() {
+        var t = [a('rIx1')];
+        e.apply(null, t)
+        }
+        .bind(this)).catch(a.oe)
+        }
+    }, {
+            path: '/stat',
+            name: '统计设置',
+            component: Le.a,
+            isParent: true,
+            redirect: '/stat/list',
+            children: [{
+                path: '/stat/list',
+                name: '统计列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(135)]).then(function() {
+                var t = [a('Z+w1')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/stat/add',
+                    name: '统计添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(7)]).then(function() {
+                    var t = [a('fdXU')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/stat/edit',
+                    name: '统计修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(7)]).then(function() {
+                    var t = [a('fdXU')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/ftp',
+            name: 'FTP管理',
+            component: Le.a,
+            isParent: true,
+            redirect: '/ftp/list',
+            children: [{
+                path: '/ftp/list',
+                name: 'FTP列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(53)]).then(function() {
+                var t = [a('6AGT')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/ftp/add',
+                    name: 'FTP添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(8)]).then(function() {
+                    var t = [a('DHhd')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/ftp/edit',
+                    name: 'FTP修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(8)]).then(function() {
+                    var t = [a('DHhd')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/oss',
+            name: 'OSS管理',
+            component: Le.a,
+            isParent: true,
+            redirect: '/oss/list',
+            children: [{
+                path: '/oss/list',
+                name: 'OSS列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(122)]).then(function() {
+                var t = [a('HaGw')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/oss/add',
+                    name: 'OSS添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(15)]).then(function() {
+                    var t = [a('msJz')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/oss/edit',
+                    name: 'OSS修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(15)]).then(function() {
+                    var t = [a('msJz')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/type',
+            name: '内容类型',
+            component: Le.a,
+            isParent: true,
+            redirect: '/type/list',
+            children: [{
+                path: '/type/list',
+                name: '内容类型列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(55)]).then(function() {
+                var t = [a('gGWK')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/type/add',
+                    name: '内容类型添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(14)]).then(function() {
+                    var t = [a('3HKL')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/type/edit',
+                    name: '内容类型修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(14)]).then(function() {
+                    var t = [a('3HKL')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/model',
+            name: '模型管理',
+            component: Le.a,
+            isParent: true,
+            redirect: '/model/list',
+            children: [{
+                path: '/model/list',
+                name: '模型列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(83)]).then(function() {
+                var t = [a('rS7Q')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/model/add',
+                    name: '模型添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(12)]).then(function() {
+                    var t = [a('0TCc')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/model/edit',
+                    name: '模型修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(12)]).then(function() {
+                    var t = [a('0TCc')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/channelModel/list',
+                    name: '栏目模型字段列表',
+                    component: function(e) {
+                    a.e(143).then(function() {
+                    var t = [a('40I8')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/channelModel/update',
+                    name: '栏目模型字段修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(21)]).then(function() {
+                    var t = [a('mIs0')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/channelModel/save',
+                    name: '栏目模型字段添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(21)]).then(function() {
+                    var t = [a('mIs0')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/contentModel/list',
+                    name: '内容模型字段模型',
+                    component: function(e) {
+                    a.e(106).then(function() {
+                    var t = [a('XZMK')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/contentModel/update',
+                    name: '内容模型字段修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(17)]).then(function() {
+                    var t = [a('qPoY')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/contentModel/save',
+                    name: '内容模型字段添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(17)]).then(function() {
+                    var t = [a('qPoY')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/globel',
+            name: '全局设置',
+            component: Le.a,
+            children: [{
+                path: '/globel/systemUpdate',
+                name: '系统设置',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(73)]).then(function() {
+                var t = [a('m267')];
+                e.apply(null, t)
+                }.bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/loginUpdate',
+                    name: '登录设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(105)]).then(function() {
+                    var t = [a('Kkve')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/memberUpdate',
+                    name: '会员设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(46)]).then(function() {
+                    var t = [a('RES6')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/registerModel',
+                    name: '会员注册管理',
+                    component: Le.a,
+                    redirect: '/globel/registerModel/list',
+                    children: [{
+                        path: '/globel/registerModel/list',
+                        name: '会员注册列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(44)]).then(function() {
+                        var t = [a('ex5X')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/globel/registerModel/add',
+                            name: '会员注册添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(16)]).then(function() {
+                            var t = [a('vPY9')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/globel/registerModel/edit',
+                            name: '会员注册修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(16)]).then(function() {
+                            var t = [a('vPY9')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/globel/markUpdate',
+                    name: '水印设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(51)]).then(function() {
+                    var t = [a('fp/a')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/firewallUpdate',
+                    name: '防火墙设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(47)]).then(function() {
+                    var t = [a('QkIn')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/attrUpdate',
+                    name: '其他设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(85)]).then(function() {
+                    var t = [a('QcAX')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/companyUpdate',
+                    name: '机构信息设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(88)]).then(function() {
+                    var t = [a('O67K')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/globel/contentUpdate',
+                    name: '内容佣金设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(111)]).then(function() {
+                    var t = [a('7Uqo')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/site',
+            component: Le.a,
+            isParent: true,
+            name: '站点管理',
+            redirect: '/site/list',
+            children: [{
+                path: '/site/list',
+                name: '站点列表',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(22)]).then(function() {
+                var t = [a('oLXO')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/site/add',
+                    name: '站点添加',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(70)]).then(function() {
+                    var t = [a('JFsn')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/site/edit',
+                    name: '站点修改',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(22)]).then(function() {
+                    var t = [a('oLXO')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }]
+        }, {
+            path: '/apiManage',
+            name: '接口管理',
+            component: Le.a,
+            children: [{
+                path: '/apiManage/apiUpdate',
+                name: '接口设置',
+                component: function(e) {
+                Promise.all([a.e(0), a.e(148)]).then(function() {
+                var t = [a('l/pQ')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/apiManage/apiSSOupdate',
+                    name: '单点登录设置',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(93)]).then(function() {
+                    var t = [a('ZRFF')];
+                e.apply(null, t)
+                }
+                .bind(this)).catch(a.oe)
+                }
+            }, {
+                    path: '/apiManage/apiMan',
+                    name: '接口管理',
+                    component: Le.a,
+                    redirect: '/apiManage/apiMan/list',
+                    children: [{
+                        path: '/apiManage/apiMan/list',
+                        name: '接口列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(45)]).then(function() {
+                        var t = [a('IemB')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiMan/add',
+                            name: '接口添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(6)]).then(function() {
+                            var t = [a('+j/0')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiMan/edit',
+                            name: '接口修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(6)]).then(function() {
+                            var t = [a('+j/0')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/apiManage/apiUserMan',
+                    name: '接口用户管理',
+                    component: Le.a,
+                    redirect: '/apiManage/apiUserMan/list',
+                    children: [{
+                        path: '/apiManage/apiUserMan/list',
+                        name: '接口用户列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(82)]).then(function() {
+                        var t = [a('UHm1')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiUserMan/add',
+                            name: '接口用户添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(52)]).then(function() {
+                            var t = [a('mNvQ')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiUserMan/edit',
+                            name: '接口用户修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(137)]).then(function() {
+                            var t = [a('jvtd')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/apiManage/apiUseRecord',
+                    name: '接口使用记录',
+                    component: Le.a,
+                    redirect: '/apiManage/apiUseRecord/list',
+                    children: [{
+                        path: '/apiManage/apiUseRecord/list',
+                        name: '接口使用列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(50)]).then(function() {
+                        var t = [a('ObGV')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/apiManage/apiRecord',
+                    name: 'api接口记录',
+                    component: Le.a,
+                    redirect: '/apiManage/apiRecord/list',
+                    children: [{
+                        path: '/apiManage/apiRecord/list',
+                        name: 'api接口记录列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(113)]).then(function() {
+                        var t = [a('HoWS')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/apiManage/apiInfo',
+                    name: 'api接口管理',
+                    component: Le.a,
+                    redirect: '/apiManage/apiInfo/list',
+                    children: [{
+                        path: '/apiManage/apiInfo/list',
+                        name: 'api接口列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(103)]).then(function() {
+                        var t = [a('6DhR')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiInfo/add',
+                            name: 'api接口添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(4)]).then(function() {
+                            var t = [a('XXr0')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiInfo/edit',
+                            name: 'api接口修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(4)]).then(function() {
+                            var t = [a('XXr0')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }, {
+                    path: '/apiManage/apiAccount',
+                    name: 'api接口账户管理',
+                    component: Le.a,
+                    redirect: '/apiManage/apiAccount/list',
+                    children: [{
+                        path: '/apiManage/apiAccount/list',
+                        name: 'api接口账户列表',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(136)]).then(function() {
+                        var t = [a('eiWJ')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiAccount/add',
+                            name: 'api接口账户添加',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(23)]).then(function() {
+                            var t = [a('pJ18')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiAccount/edit',
+                            name: 'api接口账户查看',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(23)]).then(function() {
+                            var t = [a('pJ18')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }, {
+                            path: '/apiManage/apiAccount/update',
+                            name: '独立密码修改',
+                            component: function(e) {
+                            Promise.all([a.e(0), a.e(86)]).then(function() {
+                            var t = [a('b/z8')];
+                        e.apply(null, t)
+                        }
+                        .bind(this)).catch(a.oe)
+                        }
+                    }]
+                }]
+        }, {
+            path: '/smsServer',
+            name: '短信服务',
+            component: Le.a,
+            children: [{
+                path: '/smsServer/smsServer',
+                name: '短信服务管理',
+                component: Le.a,
+                redirect: '/smsServer/smsServer/list',
+                children: [{
+                    path: '/smsServer/smsServer/list',
+                    name: '短信服务列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(77)]).then(function() {
+                    var t = [a('SPff')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/smsServer/smsServer/add',
+                        name: '短信服务添加',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(98)]).then(function() {
+                        var t = [a('AkHX')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }, {
+                        path: '/smsServer/smsServer/edit',
+                        name: '短信服务修改',
+                        component: function(e) {
+                        Promise.all([a.e(0), a.e(107)]).then(function() {
+                        var t = [a('Xqq2')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }, {
+                path: '/smsServer/smsServer/smsRecord',
+                name: '短信使用记录',
+                component: Le.a,
+                redirect: '/smsServer/smsServer/smsRecord',
+                children: [{
+                    path: '/smsServer/smsServer/smsRecord',
+                    name: '短信使用记录列表',
+                    component: function(e) {
+                    Promise.all([a.e(0), a.e(159)]).then(function() {
+                    var t = [a('/2Rl')];
+                    e.apply(null, t)
+                    }
+                    .bind(this)).catch(a.oe)
+                    }
+                }]
+            }]
+        }]
+}, {
+    path: '*',
+    name: '404',
+    component: xe,
+    meta: {
+        role: 'index'
+    },
+    hidden: true
+}]

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="../static/js/element-ui/index24_11.css">
+    <link rel="stylesheet" href="../static/js/vueContextMenu/menu.css">
+    <style>
+        .el-row {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
+
+        .el-tree-node__label {
+            font-size: 16px !important;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #deleteButton {
+            position: absolute;
+            top: 2px;
+            left: 14%
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--布局容器-->
+    <el-container style="height: 100%;min-height:100vh;" direction="vertical" v-loading="loading">
+        <el-container>
+            <div v-cloak id="menu" v-show="menuVisible" @mouseleave="outStyle()" style="position: absolute">
+                <div class="right-menu" style="display: block;">
+                    <a href="javascript:;" @click="editLevel(0)">添加同级菜单</a>
+                    <a href="javascript:;" @click="editLevel(1)">添加下级菜单</a>
+                    <a href="javascript:;" @click="editLevel(-1)">删除</a>
+                </div>
+            </div>
+            <!--左侧侧边栏-->
+            <el-aside style="border-right: rgba(197,197,197,0.65) solid 2px">
+                <!--阻止系统默认右键监听，生成自定也右键菜单 -->
+                <div class="grid-content bg-purple" style="height: 100%" @contextmenu.prevent>
+                    <el-tree
+                            :data="treeDate"
+                            show-checkbox
+                            node-key="id"
+                            :check-strictly="true"
+                            highlight-current
+                            @check="nodeCheck"
+                            @check-change="nodeCheckChange"
+                            accordion
+                            ref="tree"
+                            @node-click="handleNodeClick"
+                            @node-contextmenu='contextmenuTrigger'
+                            :props="defaultProps">
+                    </el-tree>
+
+                    <el-button id="deleteButton" v-show="isDeleteButton" size="small" type="danger"
+                               icon="el-icon-delete" circle @click="editLevel(-1)"></el-button>
+
+                </div>
+            </el-aside>
+            <!--主要区域容器-->
+            <el-main style="">
+                <div class="grid-content">
+                    <el-form :model="formData" :rules="rules" style="width: 100%" ref="submitForm">
+
+                        <el-form-item label="菜单类型" label-width="100px" prop="menuLevel" required>
+                            <template>
+                                <el-select style="width: 100%" v-model="formData.menuLevel" placeholder="请选择"
+                                >
+                                    <el-option
+                                            v-for="item in menuOption"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </template>
+                        </el-form-item>
+
+
+                        <!--//父级菜单级别-->
+                        <el-form-item v-show="formData.menuLevel == 0" label="是否直接跳转"
+                                      label-width="100px" prop="isLeaf">
+                            <el-switch
+                                    @change="isLeafChange"
+                                    v-model="formData.isLeaf"
+                                    active-color="#13ce66"
+                                    inactive-color="#ff4949">
+                            </el-switch>
+                        </el-form-item>
+
+                        <el-form-item v-show="formData.isLeaf" label="跳转指令"
+                                      label-width="100px" prop="redirect">
+                            <el-tooltip class="item" effect="light" :disabled="toolsEnable"
+                                        content="跳转指令必须是真实菜单地址，可先添加子菜单后续配置" placement="top">
+                                <!--<el-input type="input" v-model="formData.redirect" clearable   placeholder="请输入跳转地址" ></el-input>-->
+                                <el-autocomplete style="width: 100% !important;"
+                                                 class="inline-input"
+                                                 v-model="formData.redirect"
+                                                 :fetch-suggestions="querySearch"
+                                                 @select="handleSelect"
+                                ></el-autocomplete>
+                            </el-tooltip>
+                        </el-form-item>
+
+                        <el-form-item v-show="formData.menuLevel == 2" label="自定义页面"
+                                      label-width="100px" prop="isCustomPage">
+                            <el-switch
+                                    @change="isCustomPageChange"
+                                    v-model="formData.isCustomPage"
+                                    active-color="#13ce66"
+                                    inactive-color="#ff4949">
+                            </el-switch>
+                        </el-form-item>
+
+                        <el-form-item label="菜单名称" label-width="100px" prop="menuName">
+                            <el-input type="input" v-model="formData.menuName" clearable
+                                      placeholder="请选择菜单名称"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="菜单图标" label-width="100px" v-cloak>
+                            <el-upload
+                                    name="uploadFile"
+                                    class="avatar-uploader"
+                                    :action="baseImgUrl"
+                                    :show-file-list="false"
+                                    :on-success="handleAvatarSuccess"
+                                    :before-upload="beforeAvatarUpload">
+                                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            </el-upload>
+                        </el-form-item>
+
+
+                        <!--iconCls-->
+                        <el-form-item v-show="formData.menuLevel !=0" label="图标类" label-width="100px" prop="iconCls">
+                            <el-input type="input" v-model="formData.iconCls" clearable></el-input>
+                        </el-form-item>
+
+
+                        <el-form-item v-show="formData.isCustomPage == 1 && formData.menuLevel == 2" label="地址参数"
+                                      prop="customParam" label-width="100px">
+                            <el-input type="textarea" v-model="formData.customParam"
+                                      :autosize="{minRows:2,maxRows:4}" clearable></el-input>
+                        </el-form-item>
+
+                        <el-form-item v-show="formData.isCustomPage != 1 && formData.menuLevel == 2 " label="JS序号"
+                                      prop="indexJs" label-width="100px">
+                            <el-input type="input" v-model="formData.indexJs" clearable></el-input>
+                        </el-form-item>
+
+                        <el-form-item v-show="formData.isCustomPage != 1 && formData.menuLevel == 2" label="初始方法名"
+                                      prop="initFun" label-width="100px">
+                            <el-input type="input" v-model="formData.initFun" clearable></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="排序" label-width="100px" prop="priority">
+                            <el-input v-model="formData.priority" clearable></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="是否展示" label-width="100px">
+                            <el-switch
+                                    v-model="formData.isDisplay"
+                                    active-color="#13ce66"
+                                    inactive-color="#ff4949">
+                            </el-switch>
+                        </el-form-item>
+
+                        <el-form-item label="菜单地址" label-width="100px" prop="menuUrl">
+                            <el-input v-model="formData.menuUrl" clearable></el-input>
+                        </el-form-item>
+
+
+                        <el-row style="text-align: center" v-show="formData.menuName !=null && canSHow">
+                            <el-button type="primary" @click="onSubmit" v-cloak>保存</el-button>
+                        </el-row>
+                    </el-form>
+                </div>
+            </el-main>
+        </el-container>
+    </el-container>
+
+</div>
+
+
+</body>
+<!-- import Vue before Element -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/vue.js"></script>
+<!-- import JavaScript -->
+<script src="../static/js/element-ui/index24_11.js"></script>
+<script src="../static/js/commonHttp.js"></script>
+<script>
+    $(document).ready(function () {
+        var vueTree;
+        var recommend = [];
+        var isNodeSelect = false;
+        var isChilSelect = false;
+        //当前点击的目标Id,为避免目标数据的重复点击
+        var beforeId;
+
+        /**
+         * 检查目标数据是否为数字
+         * */
+        function checkInterNum(rule, value, callback) {
+            if (!rule.required) {//如果不需要验证的话那么就直接返回，不需要验证
+                callback()
+            }
+            var reg = /^[0-9]*[1-9][0-9]*$/
+            if (!value) {
+                return callback(new Error('请填写整数'))
+            } else if (!reg.test(value)) {
+                return callback(new Error('请输入整数'))
+            } else {
+                callback()
+            }
+        };
+        //vue树对象
+        vueTree = new Vue({
+                              el: '#app',
+                              data: {
+                                  menuListDatas: [],
+                                  canSHow: true,
+                                  isDeleteButton: false,
+                                  toolsEnable: false,
+                                  loading: true,
+                                  defaultKey: 1,
+                                  menuVisible: false,
+                                  currentNode: {nodeId: "", parentNodeId: ""},
+                                  contextMenuTarget: null,
+                                  baseUrl: window.parent.baseInfo.baseUrl,
+                                  baseImgUrl: window.parent.baseInfo.baseUrl
+                                              + "/api/member/upload/o_upload?appId=1580387213331704&sessionKey="
+                                              + localStorage.getItem("sessionKey") + "&type=image&nonceSt="
+                                              + window.parent.uploadSign,//上传文件路径
+                                  formData: {},//form表单
+                                  menuOption: [//菜单类型选项
+                                      {value: 0, label: '父级菜单'},
+                                      {value: 1, label: '中间父菜单'},
+                                      {value: 2, label: '内容子菜单'}
+                                  ],
+                                  imageUrl: "",
+                                  treeDate: [],//树数据
+                                  defaultProps: {
+                                      children: 'children',
+                                      label: 'label'
+                                  },
+                                  rules: {//验证规则
+                                      menuName: [
+                                          {required: true, message: '请输入菜单名称', trigger: 'blur'},
+                                          {min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur'}
+                                      ],
+                                      menuLevel: [
+                                          {required: true, message: '请选择菜单类型', trigger: 'change'}
+                                      ],
+                                      customParam: [
+                                          {required: true, message: '请输入页面参数', trigger: 'blur'},
+                                      ], priority: [
+                                          {
+                                              required: true, message: '请输入排序且必须为正整数', trigger: 'blur',
+                                              validator: checkInterNum
+                                          }
+                                      ], iconCls: [
+                                          {required: true, message: '请输入图标', trigger: 'blur'},
+                                      ],
+                                      menuUrl: [
+                                          {required: true, message: '请输入菜单地址', trigger: 'blur'},
+                                      ], redirect: [
+                                          {required: true, message: '请输入跳转指令地址', trigger: 'change'},
+                                      ],
+                                      initFun: [
+                                          {required: true, message: '请输入菜单地址', trigger: 'blur'},
+                                      ], indexJs: [
+                                          {
+                                              required: true,
+                                              message: '请输入JS序号，必须为正整数',
+                                              trigger: 'blur',
+                                              validator: checkInterNum
+                                          },
+                                      ]
+                                  }
+                              },
+                              methods: {
+                                  handleSelect(item) {
+                                      vueTree.formData.redirect = item.label;
+                                  },
+                                  querySearch(queryString, cb) {
+                                      var menuListDatas = this.menuListDatas;
+                                      var results = queryString ? menuListDatas.filter(
+                                          vueTree.createFilter(queryString)) : menuListDatas;
+                                      // 调用 callback 返回建议列表的数据
+                                      cb(results);
+                                  },
+                                  createFilter(queryString) {
+                                      return (function (restaurant) {
+                                          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase())
+                                                  === 0);
+                                      });
+                                  },
+                                  addChildIds(arr, ele) {
+                                      arr.push(ele.id);
+                                      if (ele.children) {
+                                          ele.children.forEach(function (temp) {
+                                              arr.push(temp.id);
+                                              if (temp.children && temp.children.length > 0) {//如果有孩子,递归开始
+                                                  arr = vueTree.addChildIds(arr, temp.children);
+                                              }
+                                          });
+                                      }
+                                      return arr;
+                                  },
+                                  addChildNodesIds(arr, ele) {
+                                      arr.push(ele.key);
+                                      if (ele.childNodes) {
+                                          ele.childNodes.forEach(function (temp) {
+                                              arr.push(temp.key);
+                                              if (temp.childNodes && temp.childNodes.length > 0) {//如果有孩子,递归开始
+                                                  arr = vueTree.addChildIds(arr, temp.children);
+                                              }
+                                          });
+                                      }
+                                      return arr;
+                                  },
+                                  nodeCheck(data, status) {
+                                      var arr = [];
+                                      if (status.checkedKeys.length > 0) {
+                                          vueTree.isDeleteButton = true;
+                                      } else {
+                                          vueTree.isDeleteButton = false;
+                                      }
+                                      if (isNodeSelect) {//确认全选
+                                          if (status.checkedKeys && status.checkedKeys.length > 0) {
+                                              arr = status.checkedKeys;
+                                          }
+                                          if (!isChilSelect && data.children) {//如果子节点没有被选中
+                                              arr = vueTree.addChildIds(arr, data);
+                                          }
+                                          vueTree.$refs.tree.setCheckedKeys(arr, true)
+                                          vueTree.$refs.tree.store.setDefaultExpandedKeys([data.id], true);
+                                      } else {//取消全选
+                                          var ele = vueTree.$refs.tree.getNode(data.id);
+                                          arr = vueTree.addChildNodesIds(arr, ele);
+                                          arr.forEach(function (value) {
+                                              vueTree.$refs.tree.setChecked(value, false, false);
+                                          });
+                                          if (status.checkedKeys.length == arr.length - 1) {
+                                              vueTree.isDeleteButton = false;
+                                          }
+                                          vueTree.$refs.tree.store.nodesMap[data.id].expanded = false;
+
+                                      }
+
+                                  },
+                                  nodeCheckChange(data, isSelect, chilSelect) {
+                                      isNodeSelect = isSelect;
+                                      isChilSelect = chilSelect;
+                                  },
+                                  //右键菜单级别编辑
+                                  editLevel(level) {
+                                      vueTree.menuVisible = false;
+                                      var deleteId = vueTree.$refs.tree.getCheckedKeys();
+                                      if (deleteId && deleteId.length > 0) {
+                                      } else {
+                                          deleteId = vueTree.currentNode.nodeId;
+                                      }
+                                      if (level == -1) {//删除
+                                          $.ajax({
+                                                     type: "post",
+                                                     url: '/menhu/api/admin/cmsSelfEditMenu/delete/' + deleteId + '?'
+                                                          + "appId=1580387213331704&sessionKey=" +
+                                                          localStorage.getItem("sessionKey") + "&nonceSt="
+                                                          + window.parent.uploadSign,
+                                                     async: true,
+                                                     success: function (data) {
+                                                         if (!data.message) {
+                                                             data = JSON.parse(data);
+                                                         }
+
+                                                         if (data != null) {
+                                                             vueTree.$message({
+                                                                                  message: data.message,
+                                                                                  type: 'success'
+                                                                              });
+                                                             vueTree.loading = true;
+                                                             getTreeDate();
+                                                             if (vueTree.$refs.tree.getCheckedKeys().length == 0) {
+                                                                 vueTree.isDeleteButton = false;
+                                                             }
+                                                         }
+                                                     }
+                                                 });
+                                      } else {
+                                          vueTree.formData = {};
+                                          vueTree.$data.rules.customParam[0].required = false;
+                                          // vueTree.formData.isCustomPage = false;
+                                          vueTree.$data.rules.initFun[0].required = false;
+                                          vueTree.$data.rules.indexJs[0].required = false;
+                                          vueTree.formData.isDisplay = true;
+                                          if (level == 0) {//同一菜单
+                                              vueTree.formData.parentId = vueTree.currentNode.parentId;
+                                          } else if (level == 1) {//子菜单
+                                              vueTree.formData.parentId = vueTree.currentNode.nodeId;
+                                          }
+                                      }
+
+                                  }, getFormData(data) {//获取form表单
+                                      beforeId = data.id;
+                                      httpCommon.postAction("api/admin/cmsSelfEditMenu/find/" + data.id)
+                                          .then(function (data) {
+                                              if (data != null && data.code == '200') {
+                                                  vueTree.formData = data.data;
+                                                  if (data.data.isDisplay == 1) {
+                                                      vueTree.formData.isDisplay = true;
+                                                  } else {
+                                                      vueTree.formData.isDisplay = false;
+                                                  }
+
+                                                  if (data.data.isLeaf == 1) {
+                                                      data.data.isLeaf = true;
+                                                      vueTree.$data.rules.redirect[0].required = true;
+                                                  } else {
+                                                      vueTree.$data.rules.redirect[0].required = false;
+                                                  }
+                                                  getRecommendMenuDate(vueTree.formData.id);
+                                                  if (data.data.isCustomPage == 1) {//如果自定义页面
+                                                      vueTree.$data.rules.customParam[0].required = true;
+                                                      vueTree.formData.isCustomPage = true;
+                                                  } else {
+                                                      vueTree.formData.isCustomPage = false;
+                                                      vueTree.$data.rules.customParam[0].required = false;
+                                                      vueTree.$data.rules.initFun[0].required = false;
+                                                      vueTree.$data.rules.indexJs[0].required = false;
+                                                  }
+                                              }
+                                          })
+                                  }, contextmenuTrigger(event, node) {//右键事件
+                                      var node = vueTree.$refs.tree.getNode(node.id);
+                                      var index = 1;
+                                      var show = true;
+                                      ok:while (node.parent.key) {//菜单栏只让增加三层
+                                          index++;
+                                          if (index >= 3) {
+                                              show = false;
+                                              break ok;
+                                          } else {
+                                              node = node.parent;
+                                          }
+                                      }
+                                      if (show) {
+                                          vueTree.contextMenuTarget = true;
+                                          var menu = document.querySelector("#menu");
+                                          /* 菜单定位基于鼠标点击位置 */
+                                          menu.style.left = event.clientX - 2 + "px";
+                                          menu.style.top = event.clientY - 5 + "px";
+                                          vueTree.menuVisible = true;
+                                          vueTree.currentNode.nodeId = node.id;
+                                          vueTree.currentNode.parentId = node.parentId;
+                                      } else {
+                                          vueTree.$message({
+                                                               message: '菜单栏最多增加三层',
+                                                               type: 'error'
+                                                           });
+                                      }
+                                  }, handleNodeClick(data) {//节点单击事件
+                                      vueTree.menuVisible = false;
+                                      if (beforeId && beforeId == data.id) {//重复点击了不去查询数据
+                                      } else {
+                                          vueTree.getFormData(data);
+                                      }
+                                  }, handleAvatarSuccess(response, file) {//图片上传成功回调
+                                      this.imageUrl = URL.createObjectURL(file.raw);
+                                  },
+                                  beforeAvatarUpload(file) {//图片上传前验证
+                                      var isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
+                                      var isLt2M = file.size / 1024 / 1024 < 2;
+
+                                      if (!isJPG) {
+                                          this.$message.error('上传头像图片只能是 JPG 格式!');
+                                      }
+                                      if (!isLt2M) {
+                                          this.$message.error('上传头像图片大小不能超过 2MB!');
+                                      }
+                                      return isJPG && isLt2M;
+                                  }, isCustomPageChange(value) {//自定义页面开关验证器
+                                      if (value) {
+                                          vueTree.$data.rules.customParam[0].required = true;
+                                          vueTree.$data.rules.initFun[0].required = false;
+                                          vueTree.$data.rules.indexJs[0].required = false;
+                                      } else {
+                                          vueTree.$data.rules.initFun[0].required = true;
+                                          vueTree.$data.rules.indexJs[0].required = false;
+                                          vueTree.$data.rules.customParam[0].required = false;
+                                      }
+                                      vueTree.formData.isCustomPage = value;
+                                  }, isLeafChange(value) {//自定义页面开关验证器
+                                      vueTree.$data.rules.redirect[0].required = value;
+                                  }, onSubmit() {//页面提交方法
+                                      this.$refs.submitForm.validate(function (valid, detInfo) {
+                                          if (valid) {
+                                              vueTree.canSHow = false;
+                                              var tempValue = JSON.parse(JSON.stringify(vueTree.formData));//对象浅拷贝
+                                              tempValue.appId = "1580387213331704";
+                                              tempValue.cmsChildMenuList = [];
+                                              tempValue.isCustomPage = vueTree.formData.isCustomPage ? 1 : 0;
+                                              if (tempValue.isCustomPage == 1) {//这是自定义页面内容的数据处理
+                                                  tempValue.initFun = "customMenuEdit";
+                                                  tempValue.isParent = 1;
+                                                  tempValue.indexJs = 160;
+                                              } else if (tempValue.menuLevel == 2 || tempValue.isLeaf == 1) {
+                                                  tempValue.isParent = 1;
+                                              }
+
+                                              if (tempValue.isLeaf != 1) {
+                                                  tempValue.redirect = "";
+                                              }
+
+                                              tempValue.isDisplay = vueTree.formData.isDisplay ? 1 : 0;
+                                              tempValue.isLeaf = vueTree.formData.isLeaf ? 1 : 0;
+                                              httpCommon.ajaxAction("post","/menhu/api/admin/cmsSelfEditMenu/update",tempValue,function(data){
+                                                  if (data != null && data.errorMsg !='error') {
+                                                      vueTree.$message({
+                                                                           message: data.message,
+                                                                           type: 'success'
+                                                                       });
+                                                      vueTree.canSHow = true;
+                                                      if (data.operateType == "save") {
+                                                          vueTree.loading = true;
+                                                          getTreeDate(tempValue);
+                                                      }
+
+                                                  }else{
+                                                      vueTree.$message({
+                                                                           message: data.message,
+                                                                           duration:0,
+                                                                           showClose:true,
+                                                                           type: 'error'
+                                                                       });
+                                                      vueTree.canSHow = true;
+                                                  }
+                                              });
+                                          } else {
+                                              console.log(detInfo);
+                                              return false;
+                                          }
+                                      });
+                                  }, outStyle() {
+                                      vueTree.menuVisible = false;
+                                  }
+                              },
+                              watch: {
+
+                              }
+                          })
+
+        function getRecommendMenuDate(id) {
+            if (recommend.length == 0) {
+                  httpCommon.postAction("api/admin/cmsSelfEditMenu/getRecommend/" + id)
+                    .then(function (data) {
+                        if (data != null && data.code == '200') {
+                            for (var i = 0; i <= data.data.length - 1; i++) {
+                                recommend.push({
+                                                   value: data.data[i].menuName + "(" + data.data[i].menuUrl + ")",
+                                                   label: data.data[i].menuUrl
+                                               })
+                                vueTree.menuListDatas = recommend;
+                            }
+                        }
+                    });
+            }
+            return recommend;
+        }
+
+        function getTreeDate(temp) {
+            /**
+             * 异步查询菜单数据
+             */
+            httpCommon.postAction("api/admin/cmsSelfEditMenu/list").then(function (data) {
+                if (data && data.code == 200) {
+                    vueTree.treeDate = data.body;
+                    vueTree.defaultKey = vueTree.treeDate[0].id;
+                    vueTree.loading = false;
+                    if (temp && temp.id) {
+                        vueTree.getFormData(temp);
+                        vueTree.defaultKey = temp.id;
+                    } else {
+                        vueTree.getFormData(vueTree.treeDate[0]);
+                        vueTree.defaultKey = vueTree.treeDate[0].id;
+                    }
+
+                    var timer = setInterval(function () {
+                        var node;
+                        if (vueTree && (node = vueTree.$refs.tree.getNode(vueTree.defaultKey)) != null) {
+                            vueTree.$refs.tree.setCurrentKey(vueTree.defaultKey);
+                            while (node.parent.key) {
+                                node = node.parent;
+                            }
+                            if (node.key) {
+                                vueTree.$refs.tree.store.nodesMap[node.key].expanded = true;
+                            }
+                            vueTree.$refs.tree.store.nodesMap[vueTree.defaultKey].expanded = true;
+                            if (vueTree.$refs.tree.getCheckedKeys().length == 0) {
+                                vueTree.isDeleteButton = false;
+                            }
+                            clearInterval(timer);
+                        }
+                    }, 50);
+                }
+            })
+        }
+
+        getTreeDate();
+
+    });//采用闭包模式，不让控制台直接获取元素，避免全局变量污染
+
+
+</script>
+</html>
