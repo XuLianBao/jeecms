@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="menhu:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="menhu.war">
-      <element id="artifact" artifact-name="menhu:war exploded" />
-    </root>
-  </artifact>
-</component>
